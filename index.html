@@ -293,7 +293,7 @@
 <!--                            <div class="scrollPage">-->
 <!--                                <div class="nowPage"></div>-->
 <!--                            </div>-->
-                            <progress class="scroll-indicator-progress progress" id="myprogress" value="0" max="100"></progress>
+                            <progress class="scroll-indicator-progress progress" id="progress" value="0" max="100"></progress>
                             <button tabindex="-1" type="button" class="scroll-indicator-button btn-icon right">
                                 <svg aria-hidden="true" focusable="false" class="icon-arrow-right-small">
                                     <use xlink:href="#icon-arrow-right-small" href="#icon-arrow-right-small"></use>
@@ -321,7 +321,7 @@
         //给进度条一个宽度 根据滚动元素个数决定 百分比
         // let nowPageWidth = 100 / document.querySelector('.card-overview').children.length;
         // console.log("nowpagewidth"+nowPageWidth)
-        document.getElementById("myprogress").value="0"
+        document.getElementById("progress").value="0"
         //获取进度条可滚动区域
         let scrollPageRealScrollArea = 100
         //获取可滚动距离
@@ -331,7 +331,7 @@
             //当前滚动盒子滚动的进度 百分比
             let scrollLeftSize = 100 - parseInt(((scrollWidthSize - this.scrollLeft) / scrollWidthSize) * 100)
             //滚动
-            document.querySelector('#myprogress').value = scrollPageRealScrollArea * (scrollLeftSize / 100)
+            document.querySelector('#progress').value = scrollPageRealScrollArea * (scrollLeftSize / 100)
             document.querySelector('.left').disabled = scrollPageRealScrollArea * (scrollLeftSize / 100) <= 0;
             document.querySelector('.right').disabled = scrollPageRealScrollArea * (scrollLeftSize / 100) === 100;
 
