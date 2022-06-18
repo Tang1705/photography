@@ -83,16 +83,13 @@
 
     <style>
         .scrollPage {
-            position: absolute;
-            top: 63.5%;
-            bottom: 0.8rem;
+            position: fixed;
+            margin: 0 auto;
             width: 14rem;
             height: 0.2rem;
-            /*background: gainsboro;*/
             border-radius: 40rem;
             overflow: hidden;
-            left: 82.5%;
-            margin-left: -1rem;
+            /*left: 82.5%;*/
         }
 
         .nowPage {
@@ -105,7 +102,7 @@
 
 
     <!--    <link rel="stylesheet" type="text/css" href="./resources/css/photography/vgm-app.css">-->
-    <link rel="stylesheet" type="text/css" href="./resources/css/photography/vgm-app.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/photography/style.css">
     <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
     <script>
         var _hmt = _hmt || [];
@@ -287,16 +284,16 @@
                     <div class="card-overview-progress">
                         <div aria-hidden="true" class="scroll-indicator scroll-indicator-right"><p
                                 class="scroll-indicator-help visible">Scroll for more</p>
-                            <div class="scrollPage">
-                                <div class="nowPage"></div>
-                            </div>
                             <button tabindex="-1" type="button" class="scroll-indicator-button btn-icon left"
                                     disabled="disabled">
                                 <svg aria-hidden="true" focusable="false" class="icon-arrow-left-small">
                                     <use xlink:href="#icon-arrow-left-small" href="#icon-arrow-left-small"></use>
                                 </svg>
                             </button>
-                            <progress class="scroll-indicator-progress progress" value="0"></progress>
+<!--                            <div class="scrollPage">-->
+<!--                                <div class="nowPage"></div>-->
+<!--                            </div>-->
+                            <progress class="scroll-indicator-progress progress" id="myprogress" value="0" max="100"></progress>
                             <button tabindex="-1" type="button" class="scroll-indicator-button btn-icon right">
                                 <svg aria-hidden="true" focusable="false" class="icon-arrow-right-small">
                                     <use xlink:href="#icon-arrow-right-small" href="#icon-arrow-right-small"></use>
@@ -324,7 +321,7 @@
         //给进度条一个宽度 根据滚动元素个数决定 百分比
         // let nowPageWidth = 100 / document.querySelector('.card-overview').children.length;
         // console.log("nowpagewidth"+nowPageWidth)
-        document.querySelector('.nowPage').style.width = 0 + "%"
+        document.getElementById("myprogress").value="0"
         //获取进度条可滚动区域
         let scrollPageRealScrollArea = 100
         //获取可滚动距离
@@ -334,7 +331,7 @@
             //当前滚动盒子滚动的进度 百分比
             let scrollLeftSize = 100 - parseInt(((scrollWidthSize - this.scrollLeft) / scrollWidthSize) * 100)
             //滚动
-            document.querySelector('.nowPage').style.width = scrollPageRealScrollArea * (scrollLeftSize / 100) + "%"
+            document.querySelector('#myprogress').value = scrollPageRealScrollArea * (scrollLeftSize / 100)
             document.querySelector('.left').disabled = scrollPageRealScrollArea * (scrollLeftSize / 100) <= 0;
             document.querySelector('.right').disabled = scrollPageRealScrollArea * (scrollLeftSize / 100) === 100;
 
